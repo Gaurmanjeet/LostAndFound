@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Lost & Found</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="index.html">
+            <i class="fa-solid fa-magnifying-glass-location me-2"></i>
+            Lost & Found
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="lost-items.html">
+                        Lost Items
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="found-items.html">
+                        Found Items
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="report-lost.html">
+                        Report Lost
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="report-found.html">
+                        Report Found
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3">
+                    <span class="nav-link fw-semibold">
+                        <i class="fa-solid fa-user me-1"></i>
+                        Welcome, <span id="navUserName">User</span>
+                    </span>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= DASHBOARD ================= -->
+<section class="dashboard-section py-5">
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="dashboard-header mb-5">
+
+            <h1>
+                Welcome Back,
+                <span id="dashboardUserName">User</span>
+                👋
+            </h1>
+
+            <p class="text-muted">
+                Manage your lost and found reports from your dashboard.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STAT CARDS ================= -->
+        <div class="row g-4 mb-5">
+
+            <!-- Lost Reports -->
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon lost-bg">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="lostCount">0</h2>
+                        <p>Lost Reports</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Found Reports -->
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon found-bg">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="foundCount">0</h2>
+                        <p>Found Reports</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Possible Matches -->
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon match-bg">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="matchCount">0</h2>
+                        <p>Possible Matches</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Claims -->
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon claim-bg">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="claimCount">0</h2>
+                        <p>My Claims</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECENT REPORTS ================= -->
+        <div class="dashboard-card mb-5">
+
+            <div class="dashboard-card-header">
+
+                <div>
+                    <h3>
+                        <i class="fa-solid fa-clock-rotate-left me-2"></i>
+                        Recent Reports
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Your latest lost and found reports
+                    </p>
+                </div>
+
+                <a href="report-lost.html" class="btn btn-primary">
+                    <i class="fa-solid fa-plus me-1"></i>
+                    New Report
+                </a>
+
+            </div>
+
+
+            <div id="recentReports">
+
+                <div class="text-center py-4">
+
+                    <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+
+                    <p class="mt-3">
+                        Loading reports...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ================= POSSIBLE MATCHES ================= -->
+
+<div class="dashboard-card mb-5">
+
+    <div class="dashboard-card-header">
+
+        <div>
+            <h3>
+                <i class="fa-solid fa-link me-2"></i>
+                Possible Matches
+            </h3>
+
+            <p class="text-muted mb-0">
+                Items that may match your lost or found reports
+            </p>
+        </div>
+
+    </div>
+
+
+    <div id="possibleMatches">
+
+        <div class="text-center py-4">
+
+            <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+
+            <p class="mt-3">
+                Checking for possible matches...
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+        <div class="row g-4 mb-5">
+
+            <!-- Report Lost -->
+            <div class="col-md-6">
+
+                <div class="quick-action-card">
+
+                    <div class="quick-action-icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+
+                    <div class="quick-action-content">
+
+                        <h4>Lost Something?</h4>
+
+                        <p>
+                            Report your lost item and help others identify it.
+                        </p>
+
+                        <a
+                            href="report-lost.html"
+                            class="btn btn-outline-primary"
+                        >
+                            Report Lost Item
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Report Found -->
+            <div class="col-md-6">
+
+                <div class="quick-action-card">
+
+                    <div class="quick-action-icon">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+
+                    <div class="quick-action-content">
+
+                        <h4>Found Something?</h4>
+
+                        <p>
+                            Report an item you found and help return it to its owner.
+                        </p>
+
+                        <a
+                            href="report-found.html"
+                            class="btn btn-outline-success"
+                        >
+                            Report Found Item
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INFORMATION ================= -->
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+                    <h3>
+                        <i class="fa-solid fa-bell me-2"></i>
+                        Notifications
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Important updates about your reports
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="notification-item">
+
+                <div class="notification-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <div>
+
+                    <h5>Lost & Found System</h5>
+
+                    <p class="mb-0 text-muted">
+                        Keep checking the Lost Items and Found Items sections
+                        to find a possible match for your report.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer mt-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="fa-solid fa-magnifying-glass-location me-2"></i>
+                    Lost & Found
+                </h5>
+
+                <p>
+                    A simple platform to report, search and recover lost items.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6 text-md-end">
+
+                <h6>Quick Links</h6>
+
+                <a href="index.html">Home</a>
+                <a href="lost-items.html">Lost Items</a>
+                <a href="found-items.html">Found Items</a>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+
+            <p class="mb-0">
+                © 2026 Lost & Found System. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- App JS -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

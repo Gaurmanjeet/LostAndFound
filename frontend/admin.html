@@ -2,127 +2,163 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Panel - Lost & Found</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard | Lost & Found</title>
+
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <nav class="navbar navbar-dark bg-dark">
+
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
-            <i class="fa-solid fa-magnifying-glass me-2"></i>
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+
+            <i class="fa-solid fa-magnifying-glass-location me-2"></i>
+
             Lost & Found
+
         </a>
 
-        <div>
+
+        <div class="d-flex align-items-center">
+
             <span class="text-white me-3">
+
                 <i class="fa-solid fa-user-shield me-1"></i>
-                Admin
+
+                Administrator
+
             </span>
 
+
             <button
+                type="button"
                 class="btn btn-outline-light btn-sm"
                 onclick="adminLogout()"
             >
+
+                <i class="fa-solid fa-right-from-bracket me-1"></i>
+
                 Logout
+
             </button>
+
         </div>
 
     </div>
+
 </nav>
 
 
-<div class="container py-5">
 
-    <div class="mb-4">
+<!-- =====================================================
+     ADMIN PAGE
+===================================================== -->
+
+<main
+    id="adminPage"
+    class="container py-5"
+>
+
+
+    <!-- HEADER -->
+
+    <div class="mb-5">
 
         <h1 class="fw-bold">
+
             <i class="fa-solid fa-shield-halved me-2"></i>
+
             Admin Dashboard
+
         </h1>
 
+
         <p class="text-muted">
-            Manage users, reports and claim requests
+
+            Manage users, reports, matches and claim requests.
+
         </p>
 
     </div>
 
 
-    <!-- STATISTICS -->
+
+    <!-- =================================================
+         STATISTICS
+    ================================================== -->
 
     <div class="row g-4 mb-5">
 
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0 p-4">
-                <h6 class="text-muted">Total Users</h6>
-                <h2 id="adminUsers">0</h2>
-            </div>
-        </div>
 
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0 p-4">
-                <h6 class="text-muted">Total Items</h6>
-                <h2 id="adminItems">0</h2>
-            </div>
-        </div>
+        <!-- TOTAL USERS -->
 
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0 p-4">
-                <h6 class="text-muted">Pending Claims</h6>
-                <h2 id="adminPending">0</h2>
-            </div>
-        </div>
+        <div class="col-md-6 col-lg-3">
 
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0 p-4">
-                <h6 class="text-muted">Returned Items</h6>
-                <h2 id="adminReturned">0</h2>
-            </div>
-        </div>
+            <div class="card shadow-sm border-0 h-100">
 
-    </div>
+                <div class="card-body">
 
+                    <div class="d-flex justify-content-between">
 
-    <!-- CLAIMS -->
+                        <div>
 
-    <div class="card shadow-sm border-0">
+                            <p class="text-muted mb-1">
+                                Total Users
+                            </p>
 
-        <div class="card-header bg-dark text-white py-3">
+                            <h2
+                                id="totalUsers"
+                                class="fw-bold mb-0"
+                            >
+                                0
+                            </h2>
 
-            <h4 class="mb-0">
-                <i class="fa-solid fa-file-circle-check me-2"></i>
-                Claim Requests
-            </h4>
+                        </div>
 
-        </div>
+                        <div class="text-primary fs-2">
 
-        <div class="card-body">
+                            <i class="fa-solid fa-users"></i>
 
-            <div id="adminClaims">
+                        </div>
 
-                <div class="text-center py-5">
-
-                    <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-
-                    <p class="mt-3">
-                        Loading claims...
-                    </p>
+                    </div>
 
                 </div>
 
@@ -130,52 +166,356 @@
 
         </div>
 
-    </div>
-
-</div>
 
 
-<!-- DETAILS MODAL -->
+        <!-- TOTAL ITEMS -->
 
-<div
-    class="modal fade"
-    id="claimDetailsModal"
-    tabindex="-1"
->
+        <div class="col-md-6 col-lg-3">
 
-    <div class="modal-dialog modal-lg">
+            <div class="card shadow-sm border-0 h-100">
 
-        <div class="modal-content">
+                <div class="card-body">
 
-            <div class="modal-header">
+                    <div class="d-flex justify-content-between">
 
-                <h5 class="modal-title">
-                    Claim Details
-                </h5>
+                        <div>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                ></button>
+                            <p class="text-muted mb-1">
+                                Total Items
+                            </p>
+
+                            <h2
+                                id="totalItems"
+                                class="fw-bold mb-0"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                        <div class="text-info fs-2">
+
+                            <i class="fa-solid fa-boxes-stacked"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div
-                class="modal-body"
-                id="claimDetails"
-            ></div>
+        </div>
+
+
+
+        <!-- LOST -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Lost Items
+                            </p>
+
+                            <h2
+                                id="lostItems"
+                                class="fw-bold mb-0"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                        <div class="text-danger fs-2">
+
+                            <i class="fa-solid fa-circle-exclamation"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOUND -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Found Items
+                            </p>
+
+                            <h2
+                                id="foundItems"
+                                class="fw-bold mb-0"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                        <div class="text-success fs-2">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ACTIVE -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Active Items
+                    </p>
+
+                    <h2
+                        id="activeItems"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RETURNED -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Returned Items
+                    </p>
+
+                    <h2
+                        id="returnedItems"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PENDING -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Pending Claims
+                    </p>
+
+                    <h2
+                        id="pendingClaims"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- APPROVED -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Approved Claims
+                    </p>
+
+                    <h2
+                        id="approvedClaims"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REJECTED -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Rejected Claims
+                    </p>
+
+                    <h2
+                        id="rejectedClaims"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MATCHES -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-1">
+                        Total Matches
+                    </p>
+
+                    <h2
+                        id="totalMatches"
+                        class="fw-bold"
+                    >
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CLAIM REQUESTS
+    ================================================== -->
+
+    <div class="card shadow-sm border-0">
+
+
+        <div class="card-header bg-dark text-white py-3">
+
+            <h4 class="mb-0">
+
+                <i class="fa-solid fa-file-circle-check me-2"></i>
+
+                Claim Requests
+
+            </h4>
+
+        </div>
+
+
+
+        <div class="card-body">
+
+
+            <!-- CLAIMS CONTAINER -->
+
+            <div id="adminClaimsContainer">
+
+                <div class="text-center py-5">
+
+                    <div
+                        class="spinner-border"
+                        role="status"
+                    ></div>
+
+                    <p class="mt-3 text-muted">
+                        Loading claim requests...
+                    </p>
+
+                </div>
+
+            </div>
+
 
         </div>
 
     </div>
 
-</div>
+
+</main>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="js/app.js"></script>
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/admin.js"></script>
+
 
 </body>
+
 </html>

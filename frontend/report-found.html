@@ -1,332 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Report Found Item | Lost & Found</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <title>Report Found Item - Lost & Found</title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
+
 <body>
 
-<nav class="navbar navbar-dark">
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
-
-            <i class="fa-solid fa-magnifying-glass-location"></i>
-
-            Lost<span>&</span>Found
-
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+            <i class="fa-solid fa-magnifying-glass-location me-2"></i>
+            Lost & Found
         </a>
 
-        <a href="index.html" class="btn btn-outline-light">
 
-            <i class="fa-solid fa-house"></i>
+        <div>
 
-            Home
+            <a
+                href="dashboard.html"
+                class="btn btn-outline-primary me-2"
+            >
+                Dashboard
+            </a>
 
-        </a>
+            <button
+                onclick="logoutUser()"
+                class="btn btn-outline-danger"
+            >
+                Logout
+            </button>
+
+        </div>
 
     </div>
 
 </nav>
 
 
-<section class="report-page">
+<main class="container py-5">
 
-    <div class="container">
+    <div class="row justify-content-center">
 
-        <div class="report-header">
+        <div class="col-md-8 col-lg-7">
 
-            <p class="page-label">
-                REPORT ITEM
-            </p>
+            <div class="card shadow-sm border-0">
 
-            <h1>
+                <div class="card-body p-4">
 
-                <i class="fa-solid fa-hand-holding-heart"></i>
+                    <div class="text-center mb-4">
 
-                Report a Found Item
+                        <i class="fa-solid fa-hand-holding fa-3x mb-3"></i>
 
-            </h1>
+                        <h2 class="fw-bold">
+                            Report Found Item
+                        </h2>
 
-            <p>
-                Help someone find their lost belongings.
-            </p>
-
-        </div>
-
-
-        <div class="report-card">
-
-            <form id="foundItemForm">
-
-
-                <h4 class="form-section-title">
-
-                    <i class="fa-solid fa-box"></i>
-
-                    Item Information
-
-                </h4>
-
-
-                <div class="row g-4">
-
-
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Item Name *
-                        </label>
-
-                        <input
-                            type="text"
-                            id="foundItemName"
-                            class="form-control"
-                            placeholder="e.g. Blue Backpack"
-                            required
-                        >
+                        <p class="text-muted">
+                            Help someone get their lost item back.
+                        </p>
 
                     </div>
 
 
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Category *
-                        </label>
-
-                        <select
-                            id="foundCategory"
-                            class="form-select"
-                            required
-                        >
-
-                            <option value="">
-                                Select category
-                            </option>
-
-                            <option>Electronics</option>
-                            <option>Documents</option>
-                            <option>Wallet</option>
-                            <option>Keys</option>
-                            <option>Bag</option>
-                            <option>Clothing</option>
-                            <option>Jewellery</option>
-                            <option>Other</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Date Found *
-                        </label>
-
-                        <input
-                            type="date"
-                            id="foundDate"
-                            class="form-control"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Approximate Time
-                        </label>
-
-                        <input
-                            type="time"
-                            id="foundTime"
-                            class="form-control"
-                        >
-
-                    </div>
-
-
-                    <div class="col-12">
-
-                        <label class="form-label">
-                            Description *
-                        </label>
-
-                        <textarea
-                            id="foundDescription"
-                            class="form-control"
-                            rows="5"
-                            placeholder="Describe the item, colour, brand, unique marks, etc."
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-                    <div class="col-12">
-
-                        <label class="form-label">
-                            Item Image
-                        </label>
-
-                        <input
-                            type="file"
-                            id="foundImage"
-                            class="form-control"
-                            accept="image/*"
-                        >
-
-                        <small class="text-muted">
-                            Upload a clear image if available.
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <hr>
-
-
-                <h4 class="form-section-title">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    Found Location
-
-                </h4>
-
-
-                <div class="row g-4">
-
-
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Location *
-                        </label>
-
-                        <select
-                            id="foundLocation"
-                            class="form-select"
-                            required
-                        >
-
-                            <option value="">
-                                Select location
-                            </option>
-
-                            <option>College Campus</option>
-                            <option>Library</option>
-                            <option>Canteen</option>
-                            <option>Hostel</option>
-                            <option>Classroom</option>
-                            <option>Laboratory</option>
-                            <option>Auditorium</option>
-                            <option>Main Gate</option>
-                            <option>Other</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="col-md-6">
-
-                        <label class="form-label">
-                            Specific Location
-                        </label>
-
-                        <input
-                            type="text"
-                            id="foundSpecificLocation"
-                            class="form-control"
-                            placeholder="e.g. Near Room 204"
-                        >
-
-                    </div>
-
-
-                    <div class="col-12">
-
-                        <label class="form-label">
-                            Additional Details
-                        </label>
-
-                        <textarea
-                            id="foundLocationDetails"
-                            class="form-control"
-                            rows="3"
-                            placeholder="Provide any additional information..."
-                        ></textarea>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-actions">
-
-                    <a
-                        href="index.html"
-                        class="btn btn-outline-secondary"
-                    >
-                        Cancel
-                    </a>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
+                    <form
+                        id="foundItemForm"
+                        enctype="multipart/form-data"
                     >
 
-                        <i class="fa-solid fa-paper-plane"></i>
+                        <div class="mb-3">
 
-                        Submit Found Report
+                            <label
+                                for="foundTitle"
+                                class="form-label"
+                            >
+                                Item Name
+                            </label>
 
-                    </button>
+                            <input
+                                type="text"
+                                id="foundTitle"
+                                name="title"
+                                class="form-control"
+                                placeholder="e.g. Black Wallet"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="foundCategory"
+                                class="form-label"
+                            >
+                                Category
+                            </label>
+
+                            <select
+                                id="foundCategory"
+                                name="category"
+                                class="form-select"
+                                required
+                            >
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option value="Electronics">
+                                    Electronics
+                                </option>
+
+                                <option value="Documents">
+                                    Documents
+                                </option>
+
+                                <option value="Wallet">
+                                    Wallet
+                                </option>
+
+                                <option value="Keys">
+                                    Keys
+                                </option>
+
+                                <option value="Clothing">
+                                    Clothing
+                                </option>
+
+                                <option value="Books">
+                                    Books
+                                </option>
+
+                                <option value="Accessories">
+                                    Accessories
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="foundDescription"
+                                class="form-label"
+                            >
+                                Description
+                            </label>
+
+                            <textarea
+                                id="foundDescription"
+                                name="description"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Describe the item you found"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="foundLocation"
+                                class="form-label"
+                            >
+                                Found Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="foundLocation"
+                                name="location"
+                                class="form-control"
+                                placeholder="e.g. Hostel 1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="foundDate"
+                                class="form-label"
+                            >
+                                Date Found
+                            </label>
+
+                            <input
+                                type="date"
+                                id="foundDate"
+                                name="item_date"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="foundImage"
+                                class="form-label"
+                            >
+                                Item Image
+                                <span class="text-muted">
+                                    (optional)
+                                </span>
+                            </label>
+
+                            <input
+                                type="file"
+                                id="foundImage"
+                                name="image"
+                                class="form-control"
+                                accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+                            >
+
+                            <small class="text-muted">
+                                Maximum size: 10 MB
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-success w-100"
+                        >
+                            <i class="fa-solid fa-paper-plane me-2"></i>
+                            Report Found Item
+                        </button>
+
+                    </form>
 
                 </div>
 
-
-            </form>
+            </div>
 
         </div>
 
     </div>
 
-</section>
-
-
-<footer>
-
-    <div class="container text-center">
-
-        <p class="mb-0">
-            © 2026 Lost & Found System
-        </p>
-
-    </div>
-
-</footer>
+</main>
 
 
 <script src="js/app.js"></script>
